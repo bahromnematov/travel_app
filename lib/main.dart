@@ -34,8 +34,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: SecondPage(),
-      // home: showIntro ? IntroPage() : HomePage(), //? true : false
+      home: showIntro ? IntroPage() : HomePage(), //? true : false
       routes: {
         HomePage.id: (context) => HomePage(),
         IntroPage.id: (context) => IntroPage(),

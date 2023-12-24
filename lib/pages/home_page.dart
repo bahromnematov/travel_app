@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:travel_app/pages/detail_page.dart';
+import 'package:travel_app/widgets/global.dart';
 
 class HomePage extends StatefulWidget {
   static final String id = "home_page";
@@ -153,10 +155,18 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  itemPost(
-                      image: "assets/item_2.jpeg",
-                      viloyat: "Qoraqalpog'iston",
-                      city: "text4".tr()),
+                  InkWell(
+                    onTap: () {
+                      Global.image = "assets/item_2.jpeg";
+                      Global.text = Global.text_orol;
+                      Global.zomin_url="https://www.google.com/search?sca_esv=593457982&sxsrf=AM9HkKln4FHlh5DXyiskSc6SSzsHQib7LA:1703444374039&q=zomin+sanatoriyasi+location&npsic=0&rflfq=1&rldoc=1&rllag=39797795,68444873,18879&tbm=lcl&sa=X&ved=2ahUKEwj2mrzm4KiDAxXMExAIHRt6CewQtgN6BAgPEAE&biw=1536&bih=738&dpr=1.25#rlfi=hd:;si:;mv:[[40.11163800595397,69.20991974853813],[39.48596748613463,67.67732697510064]]";
+                      Navigator.pushNamed(context, DetailPage.id);
+                    },
+                    child: itemPost(
+                        image: "assets/item_2.jpeg",
+                        viloyat: "Qoraqalpog'iston",
+                        city: "text4".tr()),
+                  ),
                   SizedBox(
                     width: 12,
                   ),
@@ -195,7 +205,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             itemAll(
-                image: "assets/item_4.jpeg", title: "Zomin", city: "Jizzax"),
+                image: "assets/item_4.jpeg",
+                title: "Zomin",
+                city: "Jizzax",
+                topage: DetailPage.id),
             itemAll(
                 image: "assets/item_2.jpeg", title: "Zomin", city: "Jizzax"),
             itemAll(
@@ -253,45 +266,50 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget itemAll({image, title, city}) {
-    return Container(
-      margin: EdgeInsets.all(20),
-      height: 160,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          image: DecorationImage(
-            image: AssetImage(image),
-            fit: BoxFit.cover,
-          )),
+  Widget itemAll({image, title, city, topage}) {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, topage);
+      },
       child: Container(
-        padding: EdgeInsets.all(12),
+        margin: EdgeInsets.all(20),
+        height: 160,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-              Colors.black.withOpacity(0.8),
-              Colors.black.withOpacity(0.3),
-              Colors.black.withOpacity(0.2),
-              Colors.black.withOpacity(0.1),
-            ])),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              city,
-              style: TextStyle(color: Colors.white.withOpacity(0.7)),
-            ),
-          ],
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.cover,
+            )),
+        child: Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
+                Colors.black.withOpacity(0.8),
+                Colors.black.withOpacity(0.3),
+                Colors.black.withOpacity(0.2),
+                Colors.black.withOpacity(0.1),
+              ])),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                city,
+                style: TextStyle(color: Colors.white.withOpacity(0.7)),
+              ),
+            ],
+          ),
         ),
       ),
     );
