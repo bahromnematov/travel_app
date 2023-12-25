@@ -159,7 +159,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Global.image = "assets/item_2.jpeg";
                       Global.text = Global.text_orol;
-                      Global.zomin_url="https://www.google.com/search?sca_esv=593457982&sxsrf=AM9HkKln4FHlh5DXyiskSc6SSzsHQib7LA:1703444374039&q=zomin+sanatoriyasi+location&npsic=0&rflfq=1&rldoc=1&rllag=39797795,68444873,18879&tbm=lcl&sa=X&ved=2ahUKEwj2mrzm4KiDAxXMExAIHRt6CewQtgN6BAgPEAE&biw=1536&bih=738&dpr=1.25#rlfi=hd:;si:;mv:[[40.11163800595397,69.20991974853813],[39.48596748613463,67.67732697510064]]";
+                      Global.zomin_url =
+                          "https://www.google.com/search?sca_esv=593457982&sxsrf=AM9HkKln4FHlh5DXyiskSc6SSzsHQib7LA:1703444374039&q=zomin+sanatoriyasi+location&npsic=0&rflfq=1&rldoc=1&rllag=39797795,68444873,18879&tbm=lcl&sa=X&ved=2ahUKEwj2mrzm4KiDAxXMExAIHRt6CewQtgN6BAgPEAE&biw=1536&bih=738&dpr=1.25#rlfi=hd:;si:;mv:[[40.11163800595397,69.20991974853813],[39.48596748613463,67.67732697510064]]";
                       Navigator.pushNamed(context, DetailPage.id);
                     },
                     child: itemPost(
